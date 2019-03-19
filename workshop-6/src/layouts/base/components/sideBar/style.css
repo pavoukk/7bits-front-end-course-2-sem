@@ -1,0 +1,13 @@
+.side-bar {
+    width: 100%;
+}
+
+.side-bar__link {
+    display: block;
+    font-size: 18px;
+    color: #979797;
+    font-family: "Roboto", sans-serif;
+    text-decoration: none;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
