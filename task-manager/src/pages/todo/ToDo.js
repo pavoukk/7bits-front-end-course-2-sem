@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Article from '../../components/article/Article';
+import Task from '../../components/task/Task';
 
 import list from './list';
 
@@ -10,7 +10,7 @@ export default class ToDo extends React.Component {
   renderList = () => {
     return list.data.map((item, index) => {
       return (
-        <Article key={index} text={item.text} />
+        <Task className="article_todo" key={index} text={item.text} status={item.status}/>
       );
     });
   };

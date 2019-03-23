@@ -1,0 +1,44 @@
+.side-bar {
+    width: 100%;
+}
+
+.side-bar__link {
+    display: block;
+    font-size: 18px;
+    color: #979797;
+    font-family: "Roboto", sans-serif;
+    text-decoration: none;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.side-bar__link:first-child {
+    position: relative;
+    left:-30px;
+    content: '';
+    background: url("./images/Combined Shape.png") no-repeat;
+    padding-left: 30px;
+}
+
+.side-bar__link:last-child {
+    position: relative;
+    left:-30px;
+    content: '';
+    background: url("./images/Shape.png") no-repeat;
+    padding-left: 30px;
+}
+
+.side-bar__link_active {
+    color: #78c2f5;
+    font-weight: 600;
+}
+
+.side-bar__link_active:first-child {
+    content: '';
+    background: url("./images/todo_blue.svg") no-repeat;
+}
+
+.side-bar__link_active:last-child{
+    content: '';
+    background: url("./images/done_blue.svg") no-repeat;
+}

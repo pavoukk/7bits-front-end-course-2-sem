@@ -1,15 +1,15 @@
 .header {
-    background-color: #96efc0;
     font-family: Helvetica, sans-serif;
     margin-bottom: 15px;
+    background: linear-gradient(154deg, #96efc0, #73baff);
 }
 
 .header__content {
     display: flex;
     align-items: center;
     box-sizing: border-box;
-    width:100%;
-    max-width: 92%;
+    width: 100%;
+    max-width: 1090px;
     height: 60px;
     padding: 10px;
     margin: 0 auto;
