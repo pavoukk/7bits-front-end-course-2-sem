@@ -5,12 +5,14 @@ import './style.css';
 
 export default class Button extends React.Component {
     render() {
-        const {className} = this.props;
+        const {className, func} = this.props;
         return (
-            <button className={`button article__${className} ${className}`}/>
+            <button onClick={func} className={`button article__${className} ${className}`}/>
         );
     };
 };
+
+
 
 Button.propTypes = {
     className: PropTypes.string

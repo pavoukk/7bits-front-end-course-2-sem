@@ -10,7 +10,7 @@ export default class Done extends React.Component {
     renderList = () => {
         return list.data.map((item, index) => {
             return (
-                <Task className="article_done" key={index} text={item.text} status={item.status}/>
+                <Task className="article_done" key={index} id={item.id} text={item.text} status={item.status}/>
             );
         });
     };
