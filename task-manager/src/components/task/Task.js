@@ -27,7 +27,6 @@ Task.propTypes = {
     status: PropTypes.string,
     className: PropTypes.string
 };
-
 Task.defaultProps = {
     id: '',
     text: '',

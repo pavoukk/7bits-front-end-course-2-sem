@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 
 import BaseLayout from './layouts/baselayout/BaseLayout';
 import ToDo from './pages/todo/ToDo';
