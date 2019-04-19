@@ -8,10 +8,10 @@ export default class Task extends React.Component {
         const {id, text, status, className} = this.props;
         return (
             <article className={`article${className ? ` ${className}` : ''}`}>
-                <Button func={() => consoleLog(id)} className={status === 'inbox' ? "ratio" : "check"}/>
+                <Button className={status === 'inbox' ? "ratio" : "check"}/>
                 <p className="article__description">{text}</p>
                 {status === 'inbox' ? <Button func={() => consoleLog(id)} className="edit"/> : ''}
-                <Button func={() => consoleLog(id)} className="delete"/>
+                <Button  className="delete"/>
             </article>
         );
     };
