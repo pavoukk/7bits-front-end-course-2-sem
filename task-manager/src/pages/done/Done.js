@@ -24,4 +24,10 @@ class Done extends React.Component {
         );
     };
 };
-export default connect (() => {}, () => {})(Done)
+const mapDispatchToProps = (dispatch) => ({
+
+});
+const mapStateToProps = (state) => ({
+
+});
+export default connect (mapStateToProps, mapDispatchToProps)(Done)

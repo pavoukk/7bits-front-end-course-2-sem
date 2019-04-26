@@ -26,4 +26,11 @@ class ToDo extends React.Component {
     };
 
 };
-export default connect (() => {}, () => {})(ToDo)
+
+const mapDispatchToProps = (dispatch) => ({
+
+});
+const mapStateToProps = (state) => ({
+
+});
+export default connect (mapStateToProps, mapDispatchToProps)(ToDo)
