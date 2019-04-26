@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Task from '../../components/task/Task';
 
@@ -7,7 +8,7 @@ import list from './list';
 import './style.css';
 import Form from "../../layouts/baselayout/components/form/Form";
 
-export default class ToDo extends React.Component {
+class ToDo extends React.Component {
     renderList = () => {
         return list.data.map((item, index) => {
             return (
@@ -23,4 +24,6 @@ export default class ToDo extends React.Component {
             </React.Fragment>
         );
     };
+
 };
+export default connect (() => {}, () => {})(ToDo)

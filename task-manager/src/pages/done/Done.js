@@ -5,8 +5,9 @@ import Task from '../../components/task/Task';
 import list from './list';
 
 import './style.css';
+import connect from "react-redux/es/connect/connect";
 
-export default class Done extends React.Component {
+class Done extends React.Component {
     renderList =() => {
         return list.data.map((item, index) => {
             return (
@@ -23,3 +24,4 @@ export default class Done extends React.Component {
         );
     };
 };
+export default connect (() => {}, () => {})(Done)
