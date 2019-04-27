@@ -8,7 +8,7 @@ import list from './list';
 import './style.css';
 import Form from "../../layouts/baselayout/components/form/Form";
 
-class ToDo extends React.Component {
+export default class ToDo extends React.Component {
     renderList = () => {
         return list.data.map((item, index) => {
             return (
@@ -20,17 +20,9 @@ class ToDo extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <Form className={'article_form'}/>
-            </React.Fragment>
-        );
-    };
+                 <Form className={'article_form'}/>
+             </React.Fragment>
+         );
+     };
 
 };
-
-const mapDispatchToProps = (dispatch) => ({
-
-});
-const mapStateToProps = (state) => ({
-
-});
-export default connect (mapStateToProps, mapDispatchToProps)(ToDo)

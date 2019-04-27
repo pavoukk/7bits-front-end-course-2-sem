@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import  { bindActionCreators } from 'redux';
 
 
 import FormField from '../../../../components/formField/FormField';
@@ -6,9 +8,13 @@ import Button from '../../../../components/button/Button';
 
 import './style.css';
 import Task from "../../../../components/task/Task";
-import list from "../../../../pages/todo/list";
+import getTasksList from "../../../../actions/tasksList/getTasksList";
 
-export default class Form extends React.Component {
+class Form extends React.Component {
+
+    componentDidMount() {
+        this.props.getTasksList();
+    };
 
     constructor(props) {
         super(props);
@@ -16,9 +22,9 @@ export default class Form extends React.Component {
         this.state = {
             disabled: true,
             value: '',
-            itemList: [...this.getElements(list)]
+            tasksList: []
         };
-    }
+    };
 
     getElements = (itemList) => {
         let res = itemList.data.map((item, index) => {
@@ -27,9 +33,11 @@ export default class Form extends React.Component {
         return res;
     };
 
-    renderList = (itemList) => {
-        const items = itemList.map((item, index) => {
-            return (<li key={index} className={'list__item'}>
+    renderList = () => {
+
+        const items = this.props.tasksList.map((item, index) => {
+            return (
+                <li key={index} className={'list__item'}>
                     {<Task className="article_todo" key={index} id={item.id} text={item} status={item.status}/>}
                 </li>
             );
@@ -52,7 +60,7 @@ export default class Form extends React.Component {
     onSubmit = (event) => {
         event.preventDefault();
         this.setState({
-            itemList: [this.state.value,
+            tasksList: [this.state.value,
                 ...this.state.itemList
             ]
         });
@@ -81,9 +89,19 @@ export default class Form extends React.Component {
                         disabled={this.state.disabled}
                     />
                 </form>
-                {this.renderList(this.state.itemList)}
+                {this.renderList()}
             </React.Fragment>
         );
-    }
-    ;
+    };
 }
+
+const mapDispatchToProps = (dispatch) => ({
+    getTasksList: bindActionCreators(getTasksList, dispatch)
+});
+
+const mapStateToProps = (state) => ({
+    tasksList: state.tasksListReducer.tasksList
+});
+
+export default connect(mapStateToProps, mapDispatchToProps) (Form);
+
