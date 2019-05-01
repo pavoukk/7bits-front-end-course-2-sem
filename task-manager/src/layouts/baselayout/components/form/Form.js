@@ -1,52 +1,20 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import  { bindActionCreators } from 'redux';
-
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import addNewTask from "../../../../actions/tasksList/addNewTask";
 
 import FormField from '../../../../components/formField/FormField';
 import Button from '../../../../components/button/Button';
-
 import './style.css';
-import Task from "../../../../components/task/Task";
-import getTasksList from "../../../../actions/tasksList/getTasksList";
 
 class Form extends React.Component {
-
-    componentDidMount() {
-        this.props.getTasksList();
-    };
-
     constructor(props) {
         super(props);
 
         this.state = {
             disabled: true,
             value: '',
-            tasksList: []
         };
-    };
-
-    getElements = (itemList) => {
-        let res = itemList.data.map((item, index) => {
-            return item.text
-        });
-        return res;
-    };
-
-    renderList = () => {
-
-        const items = this.props.tasksList.map((item, index) => {
-            return (
-                <li key={index} className={'list__item'}>
-                    {<Task className="article_todo" key={index} id={item.id} text={item} status={item.status}/>}
-                </li>
-            );
-        });
-        return (
-            <ul className={"form__list list"}>
-                {items}
-            </ul>
-        );
     };
 
     onChange = (event) => {
@@ -59,11 +27,7 @@ class Form extends React.Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-        this.setState({
-            tasksList: [this.state.value,
-                ...this.state.itemList
-            ]
-        });
+        addNewTask(this.state.value);
         this.setState({
             value: '',
             disabled: true
@@ -89,19 +53,19 @@ class Form extends React.Component {
                         disabled={this.state.disabled}
                     />
                 </form>
-                {this.renderList()}
             </React.Fragment>
         );
     };
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    getTasksList: bindActionCreators(getTasksList, dispatch)
+    addNewTask: bindActionCreators(addNewTask, dispatch)
 });
 
-const mapStateToProps = (state) => ({
-    tasksList: state.tasksListReducer.tasksList
-});
+const mapStateToProps = (state) =>
+    ({
+        tasksList: state.addNewTaskReducer.tasksList
+    });
 
-export default connect(mapStateToProps, mapDispatchToProps) (Form);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
 

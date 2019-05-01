@@ -13,7 +13,7 @@ export function get(url) {
             'Content-type': 'application/json'
         })
     })
-        .then((response)=> console.log(checkStatus(response)))
+        .then((response)=> checkStatus(response))
         .then((response) => response.json())
         .catch((error) => {
             return error;

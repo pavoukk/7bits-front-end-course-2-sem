@@ -2,18 +2,18 @@ import {get} from '../../fetcher/fetcher';
 
 import * as types from './actionTypes';
 
-export default function getTasksList() {
+export default function getCompletedTasksList() {
     return (dispatch) => {
-        return get('mockapi/getTasksList.json')
+        return get('mockapi/getCompletedTasksList.json')
             .then(response => {
                 dispatch({
-                    type: types.GET_TASKS_LIST_SUCCESS,
+                    type: types.GET_COMPLETED_TASKS_LIST_SUCCESS,
                     tasksList: response.data
                 });
             })
             .catch(error => {
                 dispatch({
-                    type: types.GET_TASKS_LIST_ERROR,
+                    type: types.GET_COMPLETED_TASKS_LIST_ERROR,
                     error: error
                 })
             })

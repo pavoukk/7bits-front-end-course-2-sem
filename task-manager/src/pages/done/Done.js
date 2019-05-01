@@ -1,19 +1,36 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import getCompletedTasksList from "../../actions/tasksList/getCompletedTasksList";
 
 import Task from '../../components/task/Task';
 
 import list from './list';
 
+
+
 import './style.css';
-import connect from "react-redux/es/connect/connect";
+import PropTypes from "prop-types";
 
 class Done extends React.Component {
-    renderList =() => {
-        return list.data.map((item, index) => {
+    componentDidMount() {
+        this.props.getCompletedTasksList();
+    }
+
+
+    renderList = () => {
+        const items = this.props.tasksList.map((item, index) => {
             return (
-                <Task className="article_done" key={index} id={item.id} text={item.text} status={item.status}/>
+                <li key={index} className={'list__item'}>
+                    {<Task className="article_todo" key={index} id={item.id} text={item.text} status={item.status}/>}
+                </li>
             );
         });
+        return (
+            <ul className={"form__list list"}>
+                {items}
+            </ul>
+        );
     };
 
     render() {
@@ -23,11 +40,16 @@ class Done extends React.Component {
             </React.Fragment>
         );
     };
-};
+}
+
 const mapDispatchToProps = (dispatch) => ({
-
+    getCompletedTasksList: bindActionCreators(getCompletedTasksList, dispatch)
 });
+
 const mapStateToProps = (state) => ({
-
+    tasksList: state.completedTasksListReducer.tasksList
 });
-export default connect (mapStateToProps, mapDispatchToProps)(Done)
+Done.propTypes = {
+    tasksList: PropTypes.array.isRequired
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Done);

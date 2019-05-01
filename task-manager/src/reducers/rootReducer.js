@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux';
 
-import tasksListReducer from './tasksListReducer'
+import currentTasksListReducer from './currentTasksListReducer'
+import completedTasksListReducer from './completedTasksListReducer'
+import addNewTaskReducer from './addNewTaskReducer'
 export default (state = {}, action) => {
     return combineReducers({
-        tasksListReducer
+        currentTasksListReducer,
+        completedTasksListReducer,
+        addNewTaskReducer
     })(state, action);
 }

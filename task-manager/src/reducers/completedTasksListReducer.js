@@ -7,14 +7,14 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case types.GET_TASKS_LIST_SUCCESS: {
+        case types.GET_COMPLETED_TASKS_LIST_SUCCESS: {
             return {
                 ...state,
                 tasksList: action.tasksList,
                 error: null
             }
         }
-        case types.GET_TASKS_LIST_ERROR: {
+        case types.GET_COMPLETED_TASKS_LIST_ERROR: {
             return {
                 ...state,
                 tasksList: [],
