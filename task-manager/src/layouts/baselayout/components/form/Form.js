@@ -6,6 +6,7 @@ import addNewTask from "../../../../actions/tasksList/addNewTask";
 import FormField from '../../../../components/formField/FormField';
 import Button from '../../../../components/button/Button';
 import './style.css';
+import getCurrentTasksList from "../../../../actions/tasksList/getCurrentTasksList";
 
 class Form extends React.Component {
     constructor(props) {
@@ -27,13 +28,17 @@ class Form extends React.Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-        addNewTask(this.state.value);
+        this.props.addNewTask({
+            text: this.state.value
+        })
+            .then(
+                () => this.props.getCurrentTasksList()
+            );
         this.setState({
             value: '',
             disabled: true
         })
     };
-
 
     render() {
         return (
@@ -59,13 +64,14 @@ class Form extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    addNewTask: bindActionCreators(addNewTask, dispatch)
+    addNewTask: bindActionCreators(addNewTask, dispatch),
+    getCurrentTasksList: bindActionCreators(getCurrentTasksList, dispatch)
 });
 
 const mapStateToProps = (state) =>
     ({
-        tasksList: state.addNewTaskReducer.tasksList
+        tasks: state.currentTasksListReducer.tasks
     });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form);
+export default  connect(mapStateToProps, mapDispatchToProps)(Form);
 

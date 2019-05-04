@@ -1,4 +1,8 @@
 .header {
+    display:flex;
+    align-self: center;
+    max-width:1366px;
+    width:100%;
     font-family: Helvetica, sans-serif;
     margin-bottom: 15px;
     background: linear-gradient(154deg, #96efc0, #73baff);

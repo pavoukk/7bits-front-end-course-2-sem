@@ -1,20 +1,21 @@
+import {remove} from '../../fetcher/fetcher';
+
 import * as types from './actionTypes';
-import {add} from "../../fetcher/fetcher";
-export default function addNewTask(text) {
-    debugger;
+
+export default function deleteTask(id) {
     return (dispatch) => {
-        return add('api/tasks', text)
+        // debugger;
+        return remove(`api/tasks/${id}`)
             .then(response => {
                 dispatch({
-                    type: types.ADD_NEW_TASK
+                    type: types.DELETE_TASK_SUCCESS
                 });
             })
             .catch(error => {
                 dispatch({
-                    type: types.ADD_NEW_TASK_ERROR,
+                    type: types.DELETE_TASK_ERROR,
                     error: error
                 })
             })
-
     }
 }

@@ -1,25 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import getCompletedTasksList from "../../actions/tasksList/getCompletedTasksList";
+import PropTypes from "prop-types";
+
+import './style.css';
+
+import getCurrentTasksList from "../../actions/tasksList/getCurrentTasksList";
 
 import Task from '../../components/task/Task';
 
-import list from './list';
-
-
-
-import './style.css';
-import PropTypes from "prop-types";
 
 class Done extends React.Component {
     componentDidMount() {
-        this.props.getCompletedTasksList();
+        this.props.getCurrentTasksList("done");
     }
 
-
     renderList = () => {
-        const items = this.props.tasksList.map((item, index) => {
+        const items = this.props.tasks.map((item, index) => {
             return (
                 <li key={index} className={'list__item'}>
                     {<Task className="article_todo" key={index} id={item.id} text={item.text} status={item.status}/>}
@@ -34,22 +31,37 @@ class Done extends React.Component {
     };
 
     render() {
-        return (
-            <React.Fragment>
-                {this.renderList()}
-            </React.Fragment>
-        );
+        if (this.props.tasks.length === 0) {
+            return (
+                <div className={"empty-done done"}>
+                    <article className={"empty-done__article"}>
+                        <p className={"empty-done__text"}>
+                            You have not done anything yet.
+                        </p>
+                        <p className={"empty-done__text"}>
+                            Let's start!
+                        </p>
+                    </article>
+                </div>
+            )
+        } else {
+            return (
+                <React.Fragment>
+                    {this.renderList()}
+                </React.Fragment>
+            );
+        }
     };
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    getCompletedTasksList: bindActionCreators(getCompletedTasksList, dispatch)
+    getCurrentTasksList: bindActionCreators(getCurrentTasksList, dispatch)
 });
 
 const mapStateToProps = (state) => ({
-    tasksList: state.completedTasksListReducer.tasksList
+    tasks: state.currentTasksListReducer.tasks
 });
 Done.propTypes = {
-    tasksList: PropTypes.array.isRequired
+    tasks: PropTypes.array.isRequired
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Done);

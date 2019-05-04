@@ -1,0 +1,17 @@
+.empty-done {
+    max-width:1366px;
+    height:100%;
+    width: 100%;
+    background: url("./images/monkey_with_banana.png")  no-repeat  bottom right;
+}
+.empty-done__article {
+    padding-top: 245px;
+}
+.empty-done__text {
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    line-height: 5px;
+    color: #626262;
+    font-weight: 500;
+    text-align: center;
+}

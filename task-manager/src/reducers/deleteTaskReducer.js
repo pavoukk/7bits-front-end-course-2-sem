@@ -1,23 +1,22 @@
 import * as types from '../actions/tasksList/actionTypes';
 
 const initialState = {
-    tasksList: [],
+    tasks: [],
     error: null
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case types.GET_COMPLETED_TASKS_LIST_SUCCESS: {
+        case types.DELETE_TASK_SUCCESS: {
             return {
                 ...state,
-                tasksList: action.tasksList,
                 error: null
             }
         }
-        case types.GET_COMPLETED_TASKS_LIST_ERROR: {
-            return {
+        case types.DELETE_TASK_ERROR: {
+            return{
                 ...state,
-                tasksList: [],
+                tasks: [],
                 error: action.error
             }
         }

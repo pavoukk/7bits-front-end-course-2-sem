@@ -1,0 +1,28 @@
+.empty-todo {
+    max-height: 670px;
+    max-width: 1366px;
+    height:100%;
+    width:100%;
+    position: relative;
+    background: url("./images/monkey.png") no-repeat 67% 47.5%;
+}
+.empty-todo::after  {
+    position: absolute;
+    width: 1366px;
+    height: 227px;
+    left:-309px;
+    top:52px;
+    content: '';
+    background: url("./images/Ellipse 2.png") no-repeat;
+}
+.empty-todo__article {
+    padding-top: 130px;
+}
+.empty-todo__text {
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    line-height: 5px;
+    color: #626262;
+    font-weight: 500;
+    text-align: center;
+}

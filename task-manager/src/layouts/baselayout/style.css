@@ -7,6 +7,7 @@
     width: 100%;
     padding: 0 25px;
     margin: 0 auto;
+
 }
 
 .main__side-bar {
@@ -20,5 +21,6 @@
     flex-grow: 1;
     box-sizing: border-box;
     padding: 15px 10px 0;
-    background-color: #fff;
+    background: #fff url("./images/Mask by Mask.png") no-repeat 80% 100%;
+
 }
