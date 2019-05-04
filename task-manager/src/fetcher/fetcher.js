@@ -1,3 +1,5 @@
+localStorage.setItem('jwt', 'eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJ0YXRpYW5hbWV6emFuaW5lQGdtYWlsLmNvbSIsImlhdCI6MTU1NjU0NjgzNywic3ViIjoiYWRtaW4iLCJleHAiOjE1NTY1NDg2MzcsImF1dGhvcml0aWVzIjpbIkFETUlOIiwiVVNFUiJdfQ.b5T-GSkcKkcTOkzlXFDlan6JwIm9RnpLsBh7XqLIMFOQHYgp0xt2MbunHvPqvcVagwvrd1fCesKTZOjeJpikzg');
+
 function checkStatus(response) {
     if(response.status >= 200 || response.status < 300) {
         return response;
@@ -6,11 +8,13 @@ function checkStatus(response) {
 }
 
 export function get(url) {
+    const token = localStorage.getItem('jwt');
     return fetch(url, {
         method: 'GET',
         headers: new Headers({
             'Accept': 'application/json',
             'Content-type': 'application/json',
+            'Authorization': `Bearer ${token}`
         })
     })
         .then((response)=> {
@@ -24,11 +28,13 @@ export function get(url) {
         });
 }
 export function add(url, text) {
-  return fetch(url, {
+    const token = localStorage.getItem('jwt');
+    return fetch(url, {
       method: 'POST',
       headers: new Headers({
           'Accept': 'application/json',
-          'Content-type': 'application/json'
+          'Content-type': 'application/json',
+          'Authorization': `Bearer ${token}`
       }),
       body: JSON.stringify(text)
   })
@@ -42,11 +48,13 @@ export function add(url, text) {
 }
 
 export  function remove(url) {
+    const token = localStorage.getItem('jwt');
     return fetch(url, {
         method: 'DELETE',
         headers: new Headers({
             'Accept': 'application/json',
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${token}`
         })
     })
         .then((response) => {
@@ -60,11 +68,13 @@ export  function remove(url) {
 }
 
 export function patch(url, data) {
+    const token = localStorage.getItem('jwt');
     return fetch(url, {
         method: 'PATCH',
         headers: new Headers({
             'Accept': 'application/json',
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${token}`
         }),
         body: JSON.stringify(data)
     })
