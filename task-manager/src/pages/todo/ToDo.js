@@ -10,9 +10,15 @@ import './style.css';
 import Form from "../../layouts/baselayout/components/form/Form";
 import PropTypes from "prop-types";
 
+import whoAmI from '../../actions/user/whoAmI';
+
 class ToDo extends React.Component {
 
     componentDidMount() {
+        if(!this.props.authorized) {
+            this.props.history.replace("/signin");
+        }
+        this.props.whoAmI();
         this.props.getCurrentTasksList("inbox");
     };
 
@@ -36,8 +42,8 @@ class ToDo extends React.Component {
         if (this.props.tasks.length === 0) {
             return (
                 <div className={"empty-todo todo"}>
-                    <Form className={'article_form'} update={() => this.props.getCurrentTasksList()}/>
-                    <article class="empty-todo__article">
+                    <Form className={'article_form'}/>
+                    <article className="empty-todo__article">
                         <p className={"empty-todo__text"}>
                             You do not have any tasks in «To Do».
                         </p>
@@ -60,12 +66,15 @@ class ToDo extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
     getCurrentTasksList: bindActionCreators(getCurrentTasksList, dispatch),
+    whoAmI: bindActionCreators(whoAmI, dispatch)
 });
 
 const mapStateToProps = (state) => ({
-    tasks: state.currentTasksListReducer.tasks
+    tasks: state.currentTasksListReducer.tasks,
+    authorized: state.whoAmIReducer.authorized
 });
 ToDo.propTypes = {
-    tasks: PropTypes.array.isRequired
+    tasks: PropTypes.array.isRequired,
+    authorized: PropTypes.bool.isRequired
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ToDo);

@@ -1,10 +1,9 @@
-import {remove} from '../../fetcher/fetcher';
+import {remove} from '../../fetcher/tasksList/fetcher';
 
 import * as types from './actionTypes';
 
 export default function deleteTask(id) {
     return (dispatch) => {
-        // debugger;
         return remove(`api/tasks/${id}`)
             .then(response => {
                 dispatch({

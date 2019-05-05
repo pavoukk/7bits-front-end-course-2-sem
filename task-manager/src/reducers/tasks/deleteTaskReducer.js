@@ -1,4 +1,4 @@
-import * as types from '../actions/tasksList/actionTypes';
+import * as types from '../../actions/tasksList/actionTypes';
 
 const initialState = {
     tasks: [],
@@ -7,13 +7,13 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case types.PATCH_TASK_SUCCESS: {
+        case types.DELETE_TASK_SUCCESS: {
             return {
                 ...state,
                 error: null
             }
         }
-        case types.PATCH_TASK_ERROR: {
+        case types.DELETE_TASK_ERROR: {
             return{
                 ...state,
                 tasks: [],

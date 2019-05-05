@@ -6,12 +6,17 @@ import PropTypes from "prop-types";
 import './style.css';
 
 import getCurrentTasksList from "../../actions/tasksList/getCurrentTasksList";
+import whoAmI from '../../actions/user/whoAmI';
 
 import Task from '../../components/task/Task';
 
 
 class Done extends React.Component {
     componentDidMount() {
+        if(!this.props.authorized) {
+            this.props.history.replace("/signin");
+        }
+        this.props.whoAmI();
         this.props.getCurrentTasksList("done");
     }
 
@@ -55,13 +60,16 @@ class Done extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    getCurrentTasksList: bindActionCreators(getCurrentTasksList, dispatch)
+    getCurrentTasksList: bindActionCreators(getCurrentTasksList, dispatch),
+    whoAmI: bindActionCreators(whoAmI, dispatch)
 });
 
 const mapStateToProps = (state) => ({
-    tasks: state.currentTasksListReducer.tasks
+    tasks: state.currentTasksListReducer.tasks,
+    authorized: state.whoAmIReducer.authorized
 });
 Done.propTypes = {
-    tasks: PropTypes.array.isRequired
+    tasks: PropTypes.array.isRequired,
+    authorized: PropTypes.bool.isRequired
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Done);

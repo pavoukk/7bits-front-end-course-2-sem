@@ -1,5 +1,3 @@
-localStorage.setItem('jwt', 'eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJ0YXRpYW5hbWV6emFuaW5lQGdtYWlsLmNvbSIsImlhdCI6MTU1NjU0NjgzNywic3ViIjoiYWRtaW4iLCJleHAiOjE1NTY1NDg2MzcsImF1dGhvcml0aWVzIjpbIkFETUlOIiwiVVNFUiJdfQ.b5T-GSkcKkcTOkzlXFDlan6JwIm9RnpLsBh7XqLIMFOQHYgp0xt2MbunHvPqvcVagwvrd1fCesKTZOjeJpikzg');
-
 function checkStatus(response) {
     if(response.status >= 200 || response.status < 300) {
         return response;

@@ -1,23 +1,22 @@
-import * as types from '../actions/tasksList/actionTypes';
+import * as types from '../../actions/user/actionTypes';
 
 const initialState = {
-    tasks: [],
+    authorized: !!localStorage.getItem('jwt'),
     error: null
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case types.GET_TASKS_LIST_SUCCESS: {
+        case types.WHOAMI_SUCCESS: {
             return {
                 ...state,
-                tasks: action.tasks === undefined ? [] : action.tasks,
                 error: null
             }
         }
-        case types.GET_TASKS_LIST_ERROR: {
+        case types.AUTHENTICATE_ERROR: {
             return {
                 ...state,
-                tasks: [],
+                authorized: false,
                 error: action.error
             }
         }

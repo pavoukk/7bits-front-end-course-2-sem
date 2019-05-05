@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import {patch} from "../../fetcher/fetcher";
+import {patch} from "../../fetcher/tasksList/fetcher";
 export default function patchTask(data, id) {
     return (dispatch) => {
         return patch(`api/tasks/${id}`, data)
