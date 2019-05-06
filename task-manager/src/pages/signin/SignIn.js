@@ -19,15 +19,16 @@ class SignIn extends React.Component {
             disabled: true
         }
     }
+
     componentDidMount() {
 
-        if(this.props.authorized) {
+        if (this.props.authorized) {
             this.props.history.replace("/");
         }
     }
 
     componentDidUpdate() {
-        if(this.props.authorized) {
+        if (this.props.authorized) {
             this.props.history.replace("/");
         }
     }
@@ -58,30 +59,30 @@ class SignIn extends React.Component {
     };
 
     render() {
-        return(
+        return (
             <form
                 className={"sign-in-form"}
                 onSubmit={this.onSubmit}
             >
                 <FormField
-                className={"sign-in-form__field"}
-                name={"sign in"}
-                placeholder={"E-mail"}
-                value={this.state.valueLogin}
-                onChange={this.onChangeLogin}
+                    className={"sign-in-form__field"}
+                    name={"sign in"}
+                    placeholder={"E-mail"}
+                    value={this.state.valueLogin}
+                    onChange={this.onChangeLogin}
                 />
                 <FormField
-                className={"sign-in-form__field"}
-                name={"password"}
-                placeholder={"Password"}
-                value={this.state.valuePassword}
-                onChange={this.onChangePassword}
+                    className={"sign-in-form__field"}
+                    name={"password"}
+                    placeholder={"Password"}
+                    value={this.state.valuePassword}
+                    onChange={this.onChangePassword}
                 />
                 <Button
-                className={"sign-in-form__button"}
-                type={"submit"}
-                value={"Sign In"}
-                disabled={this.state.disabled}
+                    className={"sign-in-form__button"}
+                    type={"submit"}
+                    value={"Sign In"}
+                    disabled={this.state.disabled}
                 />
             </form>
         )
@@ -100,4 +101,4 @@ const mapStateToProps = (state) => ({
     authorized: state.authorizeReducer.authorized
 });
 
-export default connect(mapStateToProps, mapDispatchToProps) (SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

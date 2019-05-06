@@ -4,7 +4,6 @@ import * as types from './actionTypes';
 
 export default function signIn(username, password) {
     return (dispatch) => {
-        debugger;
         return post('api/signin', {
             username: username,
             password: password

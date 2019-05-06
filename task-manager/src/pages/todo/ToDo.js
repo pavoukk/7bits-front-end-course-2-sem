@@ -15,11 +15,11 @@ import whoAmI from '../../actions/user/whoAmI';
 class ToDo extends React.Component {
 
     componentDidMount() {
-        if(!this.props.authorized) {
-            this.props.history.replace("/signin");
-        }
-        this.props.whoAmI();
-        this.props.getCurrentTasksList("inbox");
+            if (!this.props.authorized) {
+                this.props.history.replace("/signin");
+            }
+            this.props.whoAmI();
+            this.props.getCurrentTasksList("inbox");
     };
 
     renderList = () => {
@@ -40,6 +40,7 @@ class ToDo extends React.Component {
 
     render() {
         if (this.props.tasks.length === 0) {
+            // debugger;
             return (
                 <div className={"empty-todo todo"}>
                     <Form className={'article_form'}/>

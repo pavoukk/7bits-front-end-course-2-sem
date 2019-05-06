@@ -33,3 +33,6 @@
     border-radius: 20px;
     text-align: center;
 }
+.sign-in-form__button:disabled {
+    background-color: #626262;
+}
