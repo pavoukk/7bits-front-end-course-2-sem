@@ -40,7 +40,6 @@ class ToDo extends React.Component {
 
     render() {
         if (this.props.tasks.length === 0) {
-            // debugger;
             return (
                 <div className={"empty-todo todo"}>
                     <Form className={'article_form'}/>
@@ -72,7 +71,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
     tasks: state.currentTasksListReducer.tasks,
-    authorized: state.whoAmIReducer.authorized
+    authorized: state.authorizeReducer.authorized
 });
 ToDo.propTypes = {
     tasks: PropTypes.array.isRequired,

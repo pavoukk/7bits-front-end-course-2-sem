@@ -66,7 +66,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
     tasks: state.currentTasksListReducer.tasks,
-    authorized: state.whoAmIReducer.authorized
+    authorized: state.authorizeReducer.authorized
 });
 Done.propTypes = {
     tasks: PropTypes.array.isRequired,
