@@ -15,18 +15,24 @@ import whoAmI from '../../actions/user/whoAmI';
 class ToDo extends React.Component {
 
     componentDidMount() {
-            if (!this.props.authorized) {
-                this.props.history.replace("/signin");
-            }
-            this.props.whoAmI();
-            this.props.getCurrentTasksList("inbox");
+        if (!this.props.authorized) {
+            this.props.history.replace("/signin");
+        }
+        this.props.whoAmI();
+        this.props.getCurrentTasksList("inbox");
     };
 
     renderList = () => {
         const items = this.props.tasks.map((item, index) => {
             return (
                 <li key={index} className={'list__item'}>
-                    {<Task className="article_todo" key={index} id={item.id} text={item.text} status={item.status}/>}
+                    {<Task
+                        className="article_todo"
+                        key={index}
+                        id={item.id}
+                        text={item.text}
+                        status={item.status}
+                    />}
                 </li>
             );
         });
@@ -53,14 +59,13 @@ class ToDo extends React.Component {
                     </article>
                 </div>
             );
-        } else {
-            return (
-                <React.Fragment>
-                    <Form className={'article_form'}/>
-                    {this.renderList()}
-                </React.Fragment>
-            )
         }
+        return (
+            <React.Fragment>
+                <Form className={'article_form'}/>
+                {this.renderList()}
+            </React.Fragment>
+        )
     };
 }
 

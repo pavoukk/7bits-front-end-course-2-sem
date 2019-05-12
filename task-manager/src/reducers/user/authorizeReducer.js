@@ -2,13 +2,13 @@ import * as types from '../../actions/user/actionTypes';
 
 const initialState = {
     authorized: !!localStorage.getItem('jwt'),
-    error: null
+    error: null,
+    valid: true
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case types.AUTHORIZE_SUCCESS: {
-            console.log(localStorage.getItem('jwt'));
             return {
                 ...state,
                 authorized: true,
@@ -19,6 +19,7 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 authorized: false,
+                valid: false,
                 error: action.error
             }
         }

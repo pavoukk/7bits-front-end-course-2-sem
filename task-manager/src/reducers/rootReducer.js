@@ -7,6 +7,7 @@ import patchTaskReducer from './tasks/patchTaskReducer'
 
 import authorizeReducer from './user/authorizeReducer';
 import whoAmIReducer from './user/whoAmIReducer';
+import addUserReducer from './user/addUserReducer';
 export default (state = {}, action) => {
     return combineReducers({
         currentTasksListReducer,
@@ -14,6 +15,7 @@ export default (state = {}, action) => {
         deleteTaskReducer,
         patchTaskReducer,
         authorizeReducer,
-        whoAmIReducer
+        whoAmIReducer,
+        addUserReducer
     })(state, action);
 }

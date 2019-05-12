@@ -1,7 +1,6 @@
 import * as types from './actionTypes';
 import {add} from "../../fetcher/tasksList/fetcher";
 export default function addNewTask(text) {
-    debugger;
     return (dispatch) => {
         return add('api/tasks', text)
             .then(response => {

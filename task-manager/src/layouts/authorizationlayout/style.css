@@ -1,0 +1,17 @@
+.authorization-layout {
+    height:100vh;
+    background: url("./images/BG.png") no-repeat bottom;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto 0;
+}
+.authorization-layout__header {
+    width:207px;
+    height:42px;
+    display: block;
+    background-size: 207px 42px;
+    background: url("../../layouts/authorizationlayout/images/logo_ hor.png") no-repeat center;
+    margin: 100px auto 50px;
+}

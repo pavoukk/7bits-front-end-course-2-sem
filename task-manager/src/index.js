@@ -10,6 +10,7 @@ import BaseLayout from './layouts/baselayout/BaseLayout';
 import ToDo from './pages/todo/ToDo';
 import Done from './pages/done/Done';
 import SignIn from './pages/signin/SignIn'
+import SignUp from './pages/signup/SignUp'
 
 import './index.css';
 
@@ -20,6 +21,11 @@ ReactDOM.render(
                 <Route path='/signin' render={() => (
                     <AuthorizationLayout>
                         <Route exact path='/signin' component={SignIn}/>
+                    </AuthorizationLayout>
+                )}/>
+                <Route path='/signup' render={() => (
+                    <AuthorizationLayout>
+                        <Route path='/signup' component={SignUp}/>
                     </AuthorizationLayout>
                 )}/>
                 <Route path='/' render={() => (

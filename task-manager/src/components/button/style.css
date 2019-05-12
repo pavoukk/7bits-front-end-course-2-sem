@@ -5,10 +5,6 @@
     margin: 0 10px;
 }
 
-.button:last-child {
-    margin-right: 25px;
-}
-
 .check {
     width: 20px;
     height: 13px;
@@ -24,8 +20,6 @@
 
 .ratio::before {
     border-radius: 4px;
-    /*left:15%;*/
-    /*top:15%;*/
     left: 3px;
     top: 3px;
     background-color: #43cda3;

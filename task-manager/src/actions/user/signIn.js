@@ -9,17 +9,17 @@ export default function signIn(username, password) {
             password: password
         })
             .then((response) => {
-                if(response.token === undefined || response.token === 'undefined') {
-                    dispatch ({
+                if (!response.token) {
+                    dispatch({
                         type: types.AUTHORIZE_ERROR,
                         error: 'undefined token'
                     });
-                } else {
-                    localStorage.setItem('jwt', response.token);
-                    dispatch({
-                        type: types.AUTHORIZE_SUCCESS
-                    });
+                    return;
                 }
+                localStorage.setItem('jwt', response.token);
+                dispatch({
+                    type: types.AUTHORIZE_SUCCESS
+                });
             })
             .catch((error) => {
                 dispatch({

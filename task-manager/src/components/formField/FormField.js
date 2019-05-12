@@ -5,14 +5,15 @@ import './style.css';
 
 export default class FormField extends React.Component {
     render() {
-        const {value, className, type, name, placeholder, onChange} = this.props;
+        const {value, className, type, name, placeholder, onChange, autoFocus} = this.props;
         return (
             <input className={`form-field ${className}`}
-            value={value}
-            type={type}
-            name={name}
-            placeholder={placeholder}
-            onChange={onChange}
+                   value={value}
+                   type={type}
+                   name={name}
+                   placeholder={placeholder}
+                   autoFocus={autoFocus}
+                   onChange={onChange}
             />
         );
     };
@@ -34,6 +35,7 @@ FormField.defaultProps = {
     value: '',
     type: 'text',
     name: '',
-    placeholder:'',
-    onChange: () => {}
+    placeholder: '',
+    onChange: () => {
+    }
 };

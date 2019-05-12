@@ -6,9 +6,10 @@ import './style.css';
 export default class AuthorizationLayout extends React.Component {
     render() {
         return(
-            <React.Fragment>
+            <div className="authorization-layout">
+                <header className="authorization-layout__header"/>
                 {this.props.children}
-            </React.Fragment>
+            </div>
         );
     };
 };

@@ -1,26 +1,25 @@
 import React from 'react';
 
 import './style.css';
-import FormField from "../../components/formField/FormField";
-import Button from "../../components/button/Button";
+
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import PropTypes from "prop-types";
+import FormField from "../../components/formField/FormField";
+import Button from "../../components/button/Button";
+import signUp from "../../actions/user/signUp";
 
-import signIn from '../../actions/user/signIn';
-
-
-class SignIn extends React.Component {
+class SignUp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             valueLogin: '',
             valuePassword: '',
+            valueCheckbox: false
         }
     }
 
     componentDidMount() {
-
         if (this.props.authorized) {
             this.props.history.replace("/");
         }
@@ -36,23 +35,29 @@ class SignIn extends React.Component {
         this.setState({
                 valueLogin: event.target.value,
             }
-        );
+        )
     };
 
     onChangePassword = (event) => {
         this.setState({
                 valuePassword: event.target.value,
             }
-        );
+        )
     };
 
     onSubmit = (event) => {
         event.preventDefault();
-
-        const username = event.target["sign in"].value;
+        const username = event.target["sign up"].value;
         const password = event.target["password"].value;
 
-        this.props.signIn(username, password);
+        this.props.signUp(username, password);
+    };
+
+    onClick = (event) => {
+        event.preventDefault();
+        this.setState({
+            valueCheckbox: !this.state.valueCheckbox
+        })
     };
 
     formStatus = () => {
@@ -63,56 +68,67 @@ class SignIn extends React.Component {
 
     render() {
         return (
-            <div className="sign-in-page">
+            <div className="sign-up-page">
+
                 <form
-                    className={"sign-in-form"}
-                    onSubmit={this.onSubmit}
+                    className={"sign-up-form"}
                 >
                     <FormField
-                        className={`sign-in-form__field ${this.formStatus()}`}
-                        name={"sign in"}
-                        type={"text"}
+                        className={`sign-up-form__field ${this.formStatus()}`}
+                        name={"sign up"}
                         placeholder={"E-mail"}
-                        autoFocus={true}
+                        type={"text"}
                         value={this.state.valueLogin}
                         onChange={this.onChangeLogin}
                     />
                     <FormField
-                        className={`sign-in-form__field ${this.formStatus()}`}
+                        className={`sign-up-form__field ${this.formStatus()}`}
                         name={"password"}
                         type={"password"}
                         placeholder={"Password"}
                         value={this.state.valuePassword}
                         onChange={this.onChangePassword}
                     />
+                    <div className={"sign-up-form__agreement"}>
+                        <Button
+                            className={"sign-up-form__button-agreement"}
+                            type={"checkbox"}
+                            onClick={this.onClick}
+                        />
+                        <p className={"sign-up-form__text-agreement"}>
+                            I agree to processing of personal data
+                        </p>
+                    </div>
                     <Button
-                        className={"sign-in-form__button"}
+                        className={"sign-up-form__button-submit"}
                         type={"submit"}
-                        value={"Sign In"}
+                        value={"Sign Up"}
                         disabled={this.state.valueLogin === ''
-                        || this.state.valuePassword === ''}
+                        || this.state.valuePassword === '' || !this.state.valueCheckbox}
+                        onSubmit={this.onSubmit}
                     />
                 </form>
-                <p className={"sign-in-form__text"}>Don't have an account?</p>
-                <a className={"sign-in-form__link"} href="/signup">
-                    <p className={"sign-in-form__link-text"}>Sign up</p>
+                <p className={"sign-up-form__text"}>Have an account?</p>
+                <a className={"sign-up-form__link"} href="/signin">
+                    <p className={"sign-up-form__link-text"}>Sign in</p>
                 </a>
             </div>
         )
     }
 }
 
-SignIn.propTypes = {
+SignUp.propTypes = {
     authorized: PropTypes.bool.isRequired
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    signIn: bindActionCreators(signIn, dispatch)
+    signUp: bindActionCreators(signUp, dispatch)
 });
 
 const mapStateToProps = (state) => ({
     authorized: state.authorizeReducer.authorized,
     valid: state.authorizeReducer.valid
+
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

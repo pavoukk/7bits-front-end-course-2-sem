@@ -13,7 +13,6 @@ class Form extends React.Component {
         super(props);
 
         this.state = {
-            disabled: true,
             value: '',
         };
     };
@@ -36,7 +35,6 @@ class Form extends React.Component {
             );
         this.setState({
             value: '',
-            disabled: true
         })
     };
 
@@ -55,7 +53,7 @@ class Form extends React.Component {
                         className={'form__button'}
                         type={'submit'}
                         value={'Create'}
-                        disabled={this.state.disabled}
+                        disabled={this.state.value === ''}
                     />
                 </form>
             </React.Fragment>
@@ -68,10 +66,9 @@ const mapDispatchToProps = (dispatch) => ({
     getCurrentTasksList: bindActionCreators(getCurrentTasksList, dispatch)
 });
 
-const mapStateToProps = (state) =>
-    ({
-        tasks: state.currentTasksListReducer.tasks
-    });
+const mapStateToProps = (state) => ({
+    tasks: state.currentTasksListReducer.tasks
+});
 
-export default  connect(mapStateToProps, mapDispatchToProps)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
 

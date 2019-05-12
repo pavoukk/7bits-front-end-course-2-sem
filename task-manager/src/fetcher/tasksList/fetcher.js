@@ -1,5 +1,5 @@
 function checkStatus(response) {
-    if(response.status >= 200 || response.status < 300) {
+    if (response.status >= 200 || response.status < 300) {
         return response;
     }
     throw new Error(response.statusText);
@@ -15,37 +15,38 @@ export function get(url) {
             'Authorization': `Bearer ${token}`
         })
     })
-        .then((response)=> {
+        .then((response) => {
             return checkStatus(response);
         })
         .then((response) => {
             return response.json();
         })
         .catch((error) => {
-            return error;
+            throw error;
         });
 }
+
 export function add(url, text) {
     const token = localStorage.getItem('jwt');
     return fetch(url, {
-      method: 'POST',
-      headers: new Headers({
-          'Accept': 'application/json',
-          'Content-type': 'application/json',
-          'Authorization': `Bearer ${token}`
-      }),
-      body: JSON.stringify(text)
-  })
-      .then((response) => {
-          return checkStatus(response)
-      })
-      .catch((error) => {
-          return error;
-          }
-      )
+        method: 'POST',
+        headers: new Headers({
+            'Accept': 'application/json',
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }),
+        body: JSON.stringify(text)
+    })
+        .then((response) => {
+            return checkStatus(response)
+        })
+        .catch((error) => {
+                throw error;
+            }
+        )
 }
 
-export  function remove(url) {
+export function remove(url) {
     const token = localStorage.getItem('jwt');
     return fetch(url, {
         method: 'DELETE',
@@ -56,12 +57,10 @@ export  function remove(url) {
         })
     })
         .then((response) => {
-            console.log("CHECKEDD");
             return checkStatus(response);
         })
         .catch((error) => {
-            console.log("ERROR");
-            return error;
+            throw error;
         })
 }
 
@@ -80,6 +79,6 @@ export function patch(url, data) {
             return checkStatus(response)
         })
         .catch((error) => {
-            return error
+            throw error
         })
 }
