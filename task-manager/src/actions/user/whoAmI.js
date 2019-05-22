@@ -5,7 +5,7 @@ import * as types from './actionTypes';
 export default function whoAmI() {
     return (dispatch) => {
         return get('api/whoami')
-            .then((response) => {
+            .then(() => {
                 dispatch({
                     type: types.WHOAMI_SUCCESS
                 });

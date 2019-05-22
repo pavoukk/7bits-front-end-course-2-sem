@@ -1,4 +1,6 @@
 import React from 'react';
+import { I18n } from 'react-redux-i18n';
+
 
 import './style.css';
 
@@ -76,7 +78,7 @@ class SignUp extends React.Component {
                     <FormField
                         className={`sign-up-form__field ${this.formStatus()}`}
                         name={"sign up"}
-                        placeholder={"E-mail"}
+                        placeholder={I18n.t('authorization.email')}
                         type={"text"}
                         value={this.state.valueLogin}
                         onChange={this.onChangeLogin}
@@ -85,7 +87,7 @@ class SignUp extends React.Component {
                         className={`sign-up-form__field ${this.formStatus()}`}
                         name={"password"}
                         type={"password"}
-                        placeholder={"Password"}
+                        placeholder={I18n.t('authorization.password')}
                         value={this.state.valuePassword}
                         onChange={this.onChangePassword}
                     />
@@ -96,19 +98,19 @@ class SignUp extends React.Component {
                             onClick={this.onClick}
                         />
                         <p className={"sign-up-form__text-agreement"}>
-                            I agree to processing of personal data
+                            {I18n.t('authorization.sign-up.agreement')}
                         </p>
                     </div>
                     <Button
                         className={"sign-up-form__button-submit"}
                         type={"submit"}
-                        value={"Sign Up"}
+                        value={I18n.t('authorization.sign-up.title')}
                         disabled={this.state.valueLogin === ''
                         || this.state.valuePassword === '' || !this.state.valueCheckbox}
                         onSubmit={this.onSubmit}
                     />
                 </form>
-                <p className={"sign-up-form__text"}>Have an account?</p>
+                <p className={"sign-up-form__text"}>{I18n.t('authorization.sign-up.question')}</p>
                 <a className={"sign-up-form__link"} href="/signin">
                     <p className={"sign-up-form__link-text"}>Sign in</p>
                 </a>
@@ -118,7 +120,10 @@ class SignUp extends React.Component {
 }
 
 SignUp.propTypes = {
-    authorized: PropTypes.bool.isRequired
+    authorized: PropTypes.bool.isRequired,
+    signUp: PropTypes.func,
+    valid: PropTypes.bool,
+    history: PropTypes.object
 };
 
 const mapDispatchToProps = (dispatch) => ({

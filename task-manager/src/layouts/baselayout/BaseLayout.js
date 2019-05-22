@@ -19,8 +19,8 @@ export default class BaseLayout extends React.Component {
         </main>
       </React.Fragment>
     );
-  };
-};
+  }
+}
 
 BaseLayout.propTypes = {
   children: PropTypes.node.isRequired

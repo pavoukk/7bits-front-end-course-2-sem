@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { i18nReducer } from 'react-redux-i18n';
 
 import currentTasksListReducer from './tasks/currentTasksListReducer'
 import addNewTaskReducer from './tasks/addNewTaskReducer'
@@ -16,6 +17,7 @@ export default (state = {}, action) => {
         patchTaskReducer,
         authorizeReducer,
         whoAmIReducer,
-        addUserReducer
+        addUserReducer,
+        i18n: i18nReducer
     })(state, action);
 }

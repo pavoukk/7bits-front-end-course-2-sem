@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import PropTypes from "prop-types";
+import { I18n } from 'react-redux-i18n';
 
 import './style.css';
 
@@ -41,10 +42,10 @@ class Done extends React.Component {
                 <div className={"empty-done done"}>
                     <article className={"empty-done__article"}>
                         <p className={"empty-done__text"}>
-                            You have not done anything yet.
+                            {I18n.t('layout.page.done.empty.empty-text')}
                         </p>
                         <p className={"empty-done__text"}>
-                            Let's start!
+                            {I18n.t('layout.page.done.empty.empty-text-advice')}
                         </p>
                     </article>
                 </div>
@@ -56,7 +57,7 @@ class Done extends React.Component {
                 </React.Fragment>
             );
         }
-    };
+    }
 }
 
 const mapDispatchToProps = (dispatch) => ({
@@ -70,6 +71,9 @@ const mapStateToProps = (state) => ({
 });
 Done.propTypes = {
     tasks: PropTypes.array.isRequired,
-    authorized: PropTypes.bool.isRequired
+    authorized: PropTypes.bool.isRequired,
+    whoAmI: PropTypes.func,
+    getCurrentTasksList: PropTypes.func,
+    history: PropTypes.object
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Done);

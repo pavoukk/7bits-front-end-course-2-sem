@@ -15,13 +15,22 @@ export default class Button extends React.Component {
                 {value}
             </button>
         );
-    };
-};
+    }
+}
 
 Button.propTypes = {
-    className: PropTypes.string
+    className: PropTypes.string,
+    type: PropTypes.string,
+    value: PropTypes.string,
+    disabled: PropTypes.bool,
+    onClick: PropTypes.func
+
 };
 
 Button.defaultProps = {
-    className: ''
+    className: '',
+    type: '',
+    value: '',
+    disabled: false,
+    onClick: () => {}
 };

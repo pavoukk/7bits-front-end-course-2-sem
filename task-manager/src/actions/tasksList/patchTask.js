@@ -3,7 +3,7 @@ import {patch} from "../../fetcher/tasksList/fetcher";
 export default function patchTask(data, id) {
     return (dispatch) => {
         return patch(`api/tasks/${id}`, data)
-            .then(response => {
+            .then(() => {
                 dispatch({
                     type: types.PATCH_TASK_SUCCESS
                 });

@@ -8,7 +8,7 @@ export default function signUp(username, password) {
             username: username,
             password: password
         })
-            .then((response) => {
+            .then(() => {
                 dispatch({
                     type: types.ADD_USER_SUCCESS
                 });

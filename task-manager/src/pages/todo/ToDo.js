@@ -1,5 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { I18n } from 'react-redux-i18n';
+
 import getCurrentTasksList from "../../actions/tasksList/getCurrentTasksList";
 
 import {bindActionCreators} from 'redux';
@@ -20,7 +22,7 @@ class ToDo extends React.Component {
         }
         this.props.whoAmI();
         this.props.getCurrentTasksList("inbox");
-    };
+    }
 
     renderList = () => {
         const items = this.props.tasks.map((item, index) => {
@@ -51,10 +53,10 @@ class ToDo extends React.Component {
                     <Form className={'article_form'}/>
                     <article className="empty-todo__article">
                         <p className={"empty-todo__text"}>
-                            You do not have any tasks in «To Do».
+                            {I18n.t('layout.page.todo.empty.empty-text')}
                         </p>
                         <p className={"empty-todo__text"}>
-                            But you can create them right here!
+                            {I18n.t('layout.page.todo.empty.empty-text-advice')}
                         </p>
                     </article>
                 </div>
@@ -66,7 +68,7 @@ class ToDo extends React.Component {
                 {this.renderList()}
             </React.Fragment>
         )
-    };
+    }
 }
 
 const mapDispatchToProps = (dispatch) => ({
@@ -80,6 +82,9 @@ const mapStateToProps = (state) => ({
 });
 ToDo.propTypes = {
     tasks: PropTypes.array.isRequired,
-    authorized: PropTypes.bool.isRequired
+    authorized: PropTypes.bool.isRequired,
+    whoAmI: PropTypes.func,
+    getCurrentTasksList: PropTypes.func,
+    history: PropTypes.object
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ToDo);

@@ -3,7 +3,7 @@ import {add} from "../../fetcher/tasksList/fetcher";
 export default function addNewTask(text) {
     return (dispatch) => {
         return add('api/tasks', text)
-            .then(response => {
+            .then(() => {
                 dispatch({
                     type: types.ADD_NEW_TASK
                 });

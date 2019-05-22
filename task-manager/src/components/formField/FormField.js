@@ -16,8 +16,8 @@ export default class FormField extends React.Component {
                    onChange={onChange}
             />
         );
-    };
-};
+    }
+}
 
 
 FormField.propTypes = {
@@ -26,7 +26,8 @@ FormField.propTypes = {
     type: PropTypes.string,
     name: PropTypes.string,
     placeholder: PropTypes.string,
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    autoFocus: PropTypes.bool
 
 };
 

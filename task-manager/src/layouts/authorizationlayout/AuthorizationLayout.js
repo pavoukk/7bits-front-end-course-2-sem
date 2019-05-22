@@ -11,8 +11,8 @@ export default class AuthorizationLayout extends React.Component {
                 {this.props.children}
             </div>
         );
-    };
-};
+    }
+}
 
 AuthorizationLayout.propTypes = {
     children: PropTypes.node.isRequired

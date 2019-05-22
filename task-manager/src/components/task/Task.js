@@ -21,7 +21,7 @@ class Task extends React.Component {
                 <Button className="delete" onClick={() => this.onDeleteClick(id)}/>
             </article>
         );
-    };
+    }
 
     onDeleteClick = (id) => {
         this.props.deleteTask(id)
@@ -44,6 +44,9 @@ Task.propTypes = {
     text: PropTypes.string,
     status: PropTypes.string,
     className: PropTypes.string,
+    deleteTask: PropTypes.func,
+    getCurrentTasksList: PropTypes.func,
+    patchTask: PropTypes.func
 };
 
 Task.defaultProps = {
@@ -58,5 +61,5 @@ const mapDispatchToProps = (dispatch) => ({
     patchTask: bindActionCreators(patchTask, dispatch)
 });
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = () => ({});
 export default connect(mapStateToProps, mapDispatchToProps)(Task);

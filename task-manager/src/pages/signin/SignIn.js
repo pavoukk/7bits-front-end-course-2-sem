@@ -1,4 +1,5 @@
 import React from 'react';
+import { I18n } from 'react-redux-i18n';
 
 import './style.css';
 import FormField from "../../components/formField/FormField";
@@ -72,7 +73,7 @@ class SignIn extends React.Component {
                         className={`sign-in-form__field ${this.formStatus()}`}
                         name={"sign in"}
                         type={"text"}
-                        placeholder={"E-mail"}
+                        placeholder={I18n.t('authorization.email')}
                         autoFocus={true}
                         value={this.state.valueLogin}
                         onChange={this.onChangeLogin}
@@ -81,19 +82,19 @@ class SignIn extends React.Component {
                         className={`sign-in-form__field ${this.formStatus()}`}
                         name={"password"}
                         type={"password"}
-                        placeholder={"Password"}
+                        placeholder={I18n.t('authorization.password')}
                         value={this.state.valuePassword}
                         onChange={this.onChangePassword}
                     />
                     <Button
                         className={"sign-in-form__button"}
                         type={"submit"}
-                        value={"Sign In"}
+                        value={I18n.t('authorization.sign-in.title')}
                         disabled={this.state.valueLogin === ''
                         || this.state.valuePassword === ''}
                     />
                 </form>
-                <p className={"sign-in-form__text"}>Don't have an account?</p>
+                <p className={"sign-in-form__text"}>{I18n.t('authorization.sign-in.question')}</p>
                 <a className={"sign-in-form__link"} href="/signup">
                     <p className={"sign-in-form__link-text"}>Sign up</p>
                 </a>
@@ -103,7 +104,10 @@ class SignIn extends React.Component {
 }
 
 SignIn.propTypes = {
-    authorized: PropTypes.bool.isRequired
+    authorized: PropTypes.bool.isRequired,
+    valid: PropTypes.bool,
+    signIn: PropTypes.func,
+    history: PropTypes.object
 };
 
 const mapDispatchToProps = (dispatch) => ({

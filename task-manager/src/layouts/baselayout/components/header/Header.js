@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './style.css';
 
 import logotype from './images/logo.png';
@@ -14,5 +13,5 @@ export default class Header extends React.Component {
         </div>
       </header>
     );
-  };
-};
+  }
+}

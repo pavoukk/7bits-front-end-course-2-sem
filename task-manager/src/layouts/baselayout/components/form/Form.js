@@ -1,6 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import { I18n } from 'react-redux-i18n';
+import PropTypes from 'prop-types';
+
 import addNewTask from "../../../../actions/tasksList/addNewTask";
 
 import FormField from '../../../../components/formField/FormField';
@@ -15,7 +18,7 @@ class Form extends React.Component {
         this.state = {
             value: '',
         };
-    };
+    }
 
     onChange = (event) => {
         this.setState({
@@ -45,20 +48,26 @@ class Form extends React.Component {
                       onSubmit={this.onSubmit}>
                     <FormField
                         className={'form__field'}
-                        placeholder={'Type your new task'}
+                        placeholder={I18n.t('layout.page.todo.create-button.placeholder')}
                         onChange={this.onChange}
                         value={this.state.value}
                     />
                     <Button
                         className={'form__button'}
                         type={'submit'}
-                        value={'Create'}
+                        value={I18n.t('layout.page.todo.create-button.title')}
                         disabled={this.state.value === ''}
                     />
                 </form>
             </React.Fragment>
         );
-    };
+    }
+}
+
+Form.propTypes = {
+    addNewTask: PropTypes.func,
+    getCurrentTasksList: PropTypes.func
+
 }
 
 const mapDispatchToProps = (dispatch) => ({

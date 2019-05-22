@@ -5,7 +5,7 @@ import * as types from './actionTypes';
 export default function deleteTask(id) {
     return (dispatch) => {
         return remove(`api/tasks/${id}`)
-            .then(response => {
+            .then(() => {
                 dispatch({
                     type: types.DELETE_TASK_SUCCESS
                 });

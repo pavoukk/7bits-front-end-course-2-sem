@@ -1,0 +1,46 @@
+{
+  "layout": {
+    "base": {
+      "sidebar": {
+        "todo": "To Do",
+        "done": "Done"
+      }
+    },
+
+    "page": {
+      "todo": {
+        "create-button": {
+          "title": "Create",
+          "placeholder": "Type your new task"
+        },
+
+        "empty": {
+          "empty-text": "You do not have any tasks in «To Do».",
+          "empty-text-advice": "But you can create them right here!"
+        }
+      },
+
+      "done": {
+        "empty": {
+          "empty-text": "You have not done anything yet.",
+          "empty-text-advice": "Let’s start!"
+        }
+      }
+    }
+  },
+  "authorization": {
+    "email": "E-mail",
+    "password": "Password",
+
+    "sign-in":{
+      "title": "Sign in",
+      "question": "Don't have an account?"
+    },
+
+    "sign-up": {
+      "title": "Sign up",
+      "question": "Have an account?",
+      "agreement": "I agree to processing of personal data"
+    }
+  }
+}
